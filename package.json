@@ -1,0 +1,14 @@
+{
+  "name": "twitch-tg-chatmirror",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "telegraf": "^3.21.2",
+    "tmi.js": "^1.2.1"
+  }
+}
