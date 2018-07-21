@@ -31,7 +31,7 @@ bot.command('connect', async ({ from, message, reply }) => {
   }
 });
 
-bot.command('disconnect', async ({ reply }) => {
+bot.command('disconnect', async ({ from, reply }) => {
   if (from.id != BOT_ADMIN) return;
 
   try {
