@@ -1,6 +1,7 @@
 const Telegraf = require('telegraf');
 const tmi = require('tmi.js');
 const axios = require('axios');
+const ent = require('ent');
 
 const {
   BOT_TOKEN,
@@ -81,8 +82,12 @@ client.on('disconnected', (reason) => {
   bot.telegram.sendMessage(BOT_ADMIN, `disconnected: ${reason}`)
 });
 
-client.on('message', (target, ctx, msg, self) => {
-  bot.telegram.sendMessage(BOT_ADMIN, `[${ctx.username}](http://thisisonlyfor-makingthetextbluehaha.com):\n${msg}`, { parse_mode: 'Markdown' });
+client.on('message', async (target, ctx, msg, self) => {
+  try {
+    await bot.telegram.sendMessage(BOT_ADMIN, `<a href="http://thisisonlyfor-makingthetextbluehaha.com">${ctx.username}</a>:\n${ent.encode(msg)}`, { parse_mode: 'HTML' });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 bot.startPolling();
